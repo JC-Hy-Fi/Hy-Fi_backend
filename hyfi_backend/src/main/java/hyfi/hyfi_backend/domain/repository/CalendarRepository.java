@@ -28,7 +28,6 @@ public class CalendarRepository {
                 .getResultList();
     }
 
-
     public List<Calendar> findAll(){
         return em.createQuery("select c from Calendar c", Calendar.class)
                 .getResultList();
