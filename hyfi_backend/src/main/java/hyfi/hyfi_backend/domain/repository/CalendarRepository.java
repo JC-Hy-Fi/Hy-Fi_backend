@@ -33,4 +33,9 @@ public class CalendarRepository {
                 .getResultList();
     }
 
+    //삭제
+    public Calendar delete(Calendar calendar) {
+        em.remove(calendar);
+        return calendar;
+    }
 }

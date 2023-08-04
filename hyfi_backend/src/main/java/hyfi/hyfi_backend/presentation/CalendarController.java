@@ -47,4 +47,9 @@ public class CalendarController {
         return calendarService.update(calendarIdx, calendarUpdateRequestDto);
     }
 
+    //캘린더 정보 삭제
+    @DeleteMapping("{calendarIdx}/delete")
+    public Calendar delete(@PathVariable Long calendarIdx) {
+        return calendarService.delete(calendarIdx);
+    }
 }

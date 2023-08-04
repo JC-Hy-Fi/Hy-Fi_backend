@@ -40,8 +40,8 @@ public class CalendarService {
 
     //변경 감지
     @Transactional
-    public Calendar update(Long id, CalendarUpdateRequestDto requestDto) {
-        Calendar calendar = calendarRepository.findOne(id)
+    public Calendar update(Long calendarIdx, CalendarUpdateRequestDto requestDto) {
+        Calendar calendar = calendarRepository.findOne(calendarIdx)
                 .orElseThrow(() -> new IllegalArgumentException("해당 캘린더 정보가 존재하지 않습니다."));
         calendar.setTitle(requestDto.getTitle());
         calendar.setMemo(requestDto.getMemo());
@@ -49,5 +49,12 @@ public class CalendarService {
         calendar.setEnd(requestDto.getEnd());
         calendar.setType(requestDto.getType());
         return calendar;
+    }
+
+    @Transactional
+    public Calendar delete(Long calendarIdx) {
+        Calendar calendar = calendarRepository.findOne(calendarIdx)
+                .orElseThrow(() -> new IllegalArgumentException("해당 캘린더 정보가 존재하지 않습니다."));
+        return calendarRepository.delete(calendar);
     }
 }
